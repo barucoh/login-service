@@ -12534,7 +12534,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\baruco\\.nuget\\packages\\": {},
+    "C:\\Users\\Ohad\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -12543,17 +12543,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Projects\\CloudApplications\\LoginService\\LoginService\\LoginService\\LoginService.csproj",
+      "projectUniqueName": "C:\\Projects\\Cloud Applications\\login-service\\LoginService\\LoginService.csproj",
       "projectName": "LoginService",
-      "projectPath": "C:\\Projects\\CloudApplications\\LoginService\\LoginService\\LoginService\\LoginService.csproj",
-      "packagesPath": "C:\\Users\\baruco\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\CloudApplications\\LoginService\\LoginService\\LoginService\\obj\\",
+      "projectPath": "C:\\Projects\\Cloud Applications\\login-service\\LoginService\\LoginService.csproj",
+      "packagesPath": "C:\\Users\\Ohad\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\Cloud Applications\\login-service\\LoginService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\baruco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ohad\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12577,14 +12577,14 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "2.0",
-            "autoReferenced": true
-          },
           "Microsoft.AspNetCore.All": {
             "target": "Package",
-            "version": "2.0.3"
+            "version": "[2.0.3, )"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "[2.0.0, )",
+            "autoReferenced": true
           }
         },
         "imports": [

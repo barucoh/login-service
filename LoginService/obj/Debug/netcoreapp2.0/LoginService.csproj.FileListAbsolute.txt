@@ -1,0 +1,11 @@
+C:\Projects\Cloud Applications\login-service\LoginService\bin\Debug\netcoreapp2.0\LoginService.deps.json
+C:\Projects\Cloud Applications\login-service\LoginService\bin\Debug\netcoreapp2.0\LoginService.runtimeconfig.json
+C:\Projects\Cloud Applications\login-service\LoginService\bin\Debug\netcoreapp2.0\LoginService.runtimeconfig.dev.json
+C:\Projects\Cloud Applications\login-service\LoginService\bin\Debug\netcoreapp2.0\LoginService.dll
+C:\Projects\Cloud Applications\login-service\LoginService\bin\Debug\netcoreapp2.0\LoginService.pdb
+C:\Projects\Cloud Applications\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.csprojResolveAssemblyReference.cache
+C:\Projects\Cloud Applications\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.csproj.CoreCompileInputs.cache
+C:\Projects\Cloud Applications\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.AssemblyInfoInputs.cache
+C:\Projects\Cloud Applications\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.AssemblyInfo.cs
+C:\Projects\Cloud Applications\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.dll
+C:\Projects\Cloud Applications\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.pdb

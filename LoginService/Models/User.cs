@@ -8,15 +8,14 @@ namespace LoginService.Models
     public class User
     {
         public string _id { get; set; }
-        public string password { get; set; }
-
+        public string Password { get; set; }
     }
 
     public class Token
     {
-        public string _id { get; set; }
-        public int _ttl { get; set; }
-        public DateTime createdTime { get; set; }
+        public string ID { get; set; }
+        public int TTL { get; set; }
+        public DateTime CreatedTime { get; set; }
         public Token()
         {
 

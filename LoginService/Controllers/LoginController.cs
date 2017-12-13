@@ -38,7 +38,7 @@ namespace LoginService.Controllers
             if (!response.IsSuccessStatusCode)
                 return false;
             var token = (Token)JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync(), typeof(Token));
-            return token.createdTime.AddSeconds(token._ttl).CompareTo(DateTime.Now) > 0;
+            return token.CreatedTime.AddSeconds(token.TTL).CompareTo(DateTime.Now) > 0;
         }
 
         // POST api/login
@@ -50,12 +50,12 @@ namespace LoginService.Controllers
             if (response.IsSuccessStatusCode)
             {
                 User u = (User)JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync(), typeof(User));
-                if(user.password.Equals(u.password))
+                if(user.Password.Equals(u.Password))
                 {
                     Token token = new Token();
-                    token._id = user._id + ":token:" + Guid.NewGuid();
-                    token._ttl = 600;
-                    token.createdTime = DateTime.Now;
+                    token.ID = user._id + ":token:" + Guid.NewGuid();
+                    token.TTL = 600;
+                    token.CreatedTime = DateTime.Now;
 
                     HttpContent httpContent = new StringContent(
                         JsonConvert.SerializeObject(token),
