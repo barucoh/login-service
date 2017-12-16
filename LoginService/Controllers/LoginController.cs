@@ -12,9 +12,6 @@ namespace LoginService.Controllers
     [Route("api/[controller]")]
     public class LoginController : Controller
     {
-        static Dictionary<string, Token> ActiveLogins = new Dictionary<string, Token>();
-        static List<User> Users = new List<User>();
-
         // GET api/login/validatesession/<user>:token:<guid>
         // Returns TTL of User's token
         [HttpGet]
