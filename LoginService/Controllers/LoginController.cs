@@ -14,21 +14,9 @@ namespace LoginService.Controllers
     {
         static Dictionary<string, Token> ActiveLogins = new Dictionary<string, Token>();
         static List<User> Users = new List<User>();
-        // GET api/login
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET api/login/5
+        // GET api/login/validatesession/<user>:token:<guid>
         // Returns TTL of User's token
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         [HttpGet]
         [Route("ValidateSession/{tokenId}")]
         public async Task<Boolean> ValidateSession(string tokenId)
@@ -42,54 +30,58 @@ namespace LoginService.Controllers
         }
 
         // POST api/login
+        // User logging in and new token is created
         [HttpPost]
-        public async Task<Token> Post([FromBody]User user)
+        public async Task<User> Post([FromBody]User user)
         {
             var httpClient = Helpers.CouchDBConnect.GetClient("users");
-            var response = await httpClient.GetAsync("users/" + user._id);
-            if (response.IsSuccessStatusCode)
+            User u = await DoesUserExist(user._id);
+            if (u != null)
             {
-                User u = (User)JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync(), typeof(User));
-                if(user.Password.Equals(u.Password))
+                if (user.password.Equals(u.password))
                 {
-                    Token token = new Token();
-                    token.ID = user._id + ":token:" + Guid.NewGuid();
-                    token.TTL = 600;
-                    token.CreatedTime = DateTime.Now;
+                    u.token = new Token();
+                    u.token.ID = u._id + ":token:" + Guid.NewGuid();
+                    u.token.TTL = 600;
+                    u.token.CreatedTime = DateTime.Now;
 
                     HttpContent httpContent = new StringContent(
-                        JsonConvert.SerializeObject(token),
+                        JsonConvert.SerializeObject(u),
                         System.Text.Encoding.UTF8,
                         "application/json"
                         );
 
-                    await httpClient.PostAsync("users", httpContent);
+                    var response = await httpClient.PutAsync("users/" + u._id, httpContent);
 
-                    return token;
+                    return u;
                 }
             }
             return null;
         }
 
-        async Task<Boolean> DoesUserExist(User user)
-        {
-            var httpClient = Helpers.CouchDBConnect.GetClient("users");
-            var response = await httpClient.GetAsync("users/" + user._id);
-            return response.IsSuccessStatusCode ? false : true;
-        }
-
+        // POST api/login/createuser
+        // Creating a new user
         [HttpPost]
         [Route("CreateUser")]
         public async Task<int> CreateUser([FromBody] User user)
         {
-            if (await DoesUserExist(user))
+            User u = await DoesUserExist(user._id);
+            if (u != null)
                 return -1;
             var httpClient = Helpers.CouchDBConnect.GetClient("users");
-            string jsonifiedUserObject = JsonConvert.SerializeObject(user);
-            HttpContent httpContent = new StringContent(jsonifiedUserObject, System.Text.Encoding.UTF8, "applications/json");
-            var response = await httpClient.PostAsync("", httpContent);
+            string jsonifiedUserObject = JsonConvert.SerializeObject(
+                new
+                {
+                    _id = user._id,
+                    password = user.password
+                });
+            HttpContent httpContent = new StringContent(
+                jsonifiedUserObject,
+                System.Text.Encoding.UTF8,
+                "application/json"
+                );
+            var response = await httpClient.PostAsync("users", httpContent);
             Console.WriteLine(response);
-
             return 0;
         }
 
@@ -100,9 +92,43 @@ namespace LoginService.Controllers
         }
 
         // DELETE api/login/5
+        // Deleting user
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async void Delete(string id)
         {
+            var httpClient = Helpers.CouchDBConnect.GetClient("users");
+            User u = await DoesUserExist(id);
+            if (u != null)
+                await httpClient.DeleteAsync("users/" + u._id + "?rev=" + u._rev);
+        }
+
+        // PUT api/login/updatesession/<user id>
+        // Renewing user's token
+        [HttpPut("{id}")]
+        [Route("UpdateSession")]
+        public async void UpdateSession(string id)
+        {
+            var httpClient = Helpers.CouchDBConnect.GetClient("users");
+            User user = await DoesUserExist(id);
+            if (user != null)
+            {
+                user.token.CreatedTime = System.DateTime.Now;
+                string jsonifiedUserObject = JsonConvert.SerializeObject(user);
+                HttpContent httpContent = new StringContent(
+                    jsonifiedUserObject,
+                    System.Text.Encoding.UTF8,
+                    "application/json"
+                    );
+                var response = await httpClient.PutAsync("users/" + id, httpContent);
+            }
+        }
+
+        // Validating user's existence in the database
+        async Task<User> DoesUserExist(string id)
+        {
+            var httpClient = Helpers.CouchDBConnect.GetClient("users");
+            var response = await httpClient.GetAsync("users/" + id);
+            return response.IsSuccessStatusCode ? (User)JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync(), typeof(User)) : null;
         }
     }
 }

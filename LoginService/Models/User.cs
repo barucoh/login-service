@@ -8,7 +8,9 @@ namespace LoginService.Models
     public class User
     {
         public string _id { get; set; }
-        public string Password { get; set; }
+        public string _rev { get; set; }
+        public string password { get; set; }
+        public Token token { get; set; }
     }
 
     public class Token
@@ -21,4 +23,6 @@ namespace LoginService.Models
 
         }
     }
+
+
 }
