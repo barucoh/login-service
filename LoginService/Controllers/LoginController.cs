@@ -29,7 +29,7 @@ namespace LoginService.Controllers
         // POST api/login
         // User logging in and new token is created
         [HttpPost]
-        public async Task<User> Post([FromBody]User user)
+        public async Task<User> loginUser([FromBody]User user)
         {
             var httpClient = Helpers.CouchDBConnect.GetClient("users");
             User u = await DoesUserExist(user._id);
@@ -59,7 +59,7 @@ namespace LoginService.Controllers
         // POST api/login/createuser
         // Creating a new user
         [HttpPost]
-        [Route("CreateUser")]
+        [Route("createuser")]
         public async Task<int> CreateUser([FromBody] User user)
         {
             User u = await DoesUserExist(user._id);

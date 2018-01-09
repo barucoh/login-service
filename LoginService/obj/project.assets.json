@@ -12534,7 +12534,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ohad\\.nuget\\packages\\": {},
+    "C:\\Users\\Tal\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -12543,17 +12543,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Projects\\Cloud Applications\\login-service\\LoginService\\LoginService.csproj",
+      "projectUniqueName": "C:\\Users\\Tal\\cloudapplicationproject\\login-service\\LoginService\\LoginService.csproj",
       "projectName": "LoginService",
-      "projectPath": "C:\\Projects\\Cloud Applications\\login-service\\LoginService\\LoginService.csproj",
-      "packagesPath": "C:\\Users\\Ohad\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\Cloud Applications\\login-service\\LoginService\\obj\\",
+      "projectPath": "C:\\Users\\Tal\\cloudapplicationproject\\login-service\\LoginService\\LoginService.csproj",
+      "packagesPath": "C:\\Users\\Tal\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Tal\\cloudapplicationproject\\login-service\\LoginService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Ohad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Tal\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12577,14 +12577,14 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.All": {
-            "target": "Package",
-            "version": "[2.0.3, )"
-          },
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "[2.0.0, )",
+            "version": "2.0",
             "autoReferenced": true
+          },
+          "Microsoft.AspNetCore.All": {
+            "target": "Package",
+            "version": "2.0.3"
           }
         },
         "imports": [
