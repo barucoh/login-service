@@ -29,7 +29,7 @@ namespace LoginService.Controllers
         // POST api/login
         // User logging in and new token is created
         [HttpPost]
-        public async Task<User> loginUser([FromBody]User user)
+        public async Task<User> POST([FromBody]User user)
         {
             var httpClient = Helpers.CouchDBConnect.GetClient("users");
             User u = await DoesUserExist(user._id);
