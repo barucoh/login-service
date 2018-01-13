@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "70b3bde655f1381cc2c47ce764bce5ef018ebe33"
+    "signature": "a5df814f4e70ac51eb5240874abe1e490525a127"
   },
   "compilationOptions": {
     "defines": [
@@ -24,7 +24,8 @@
       "LoginService/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.All": "2.0.3",
-          "Microsoft.NETCore.App": "2.0.0"
+          "Microsoft.NETCore.App": "2.0.0",
+          "StackExchange.Redis.StrongName": "1.2.6"
         },
         "runtime": {
           "LoginService.dll": {}
@@ -1687,7 +1688,7 @@
         "dependencies": {
           "Microsoft.Extensions.Caching.Abstractions": "2.0.0",
           "Microsoft.Extensions.Options": "2.0.0",
-          "StackExchange.Redis.StrongName": "1.2.4"
+          "StackExchange.Redis.StrongName": "1.2.6"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Caching.Redis.dll": {}
@@ -2620,7 +2621,7 @@
           "lib/netstandard1.1/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
-      "StackExchange.Redis.StrongName/1.2.4": {
+      "StackExchange.Redis.StrongName/1.2.6": {
         "dependencies": {
           "NETStandard.Library": "2.0.0",
           "System.Collections": "4.3.0",
@@ -5322,12 +5323,12 @@
       "path": "sqlitepclraw.provider.e_sqlite3.netstandard11/1.1.7",
       "hashPath": "sqlitepclraw.provider.e_sqlite3.netstandard11.1.1.7.nupkg.sha512"
     },
-    "StackExchange.Redis.StrongName/1.2.4": {
+    "StackExchange.Redis.StrongName/1.2.6": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-qrfSB1BnmM17V20A4yvvNA0HNiDgnBd/CcjaeMKMA4qtup1uuBUMyhl20oj31fRVo71E/fXTbmQCuM9ytBJs6w==",
-      "path": "stackexchange.redis.strongname/1.2.4",
-      "hashPath": "stackexchange.redis.strongname.1.2.4.nupkg.sha512"
+      "sha512": "sha512-UFmT1/JYu1PLiRwkyvEPVHk/tVTJa8Ka2rb9yzidzDoQARvhBVRpaWUeaP81373v54jupDBvAoGHGl0EY/HphQ==",
+      "path": "stackexchange.redis.strongname/1.2.6",
+      "hashPath": "stackexchange.redis.strongname.1.2.6.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",

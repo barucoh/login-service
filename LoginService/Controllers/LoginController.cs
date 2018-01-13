@@ -6,30 +6,40 @@ using Microsoft.AspNetCore.Mvc;
 using LoginService.Models;
 using Newtonsoft.Json;
 using System.Net.Http;
+using StackExchange.Redis;
+using LoginService.Helpers;
 
 namespace LoginService.Controllers
 {
     [Route("api/[controller]")]
     public class LoginController : Controller
     {
+        IDatabase cachingDB;
+        public LoginController(IRedisConnectionFactory caching)
+        {
+            cachingDB = caching.Connection().GetDatabase();
+        }
+
         // GET api/login/validatesession/<user>:token:<guid>
         // Returns TTL of User's token
         [HttpGet]
-        [Route("ValidateSession/{tokenId}")]
-        public async Task<Boolean> ValidateSession(string tokenId)
+        [Route("ValidateSession/{userID}")]
+        public Boolean ValidateSession(string userID)
         {
-            var httpClient = Helpers.CouchDBConnect.GetClient("users");
-            var response = await httpClient.GetAsync("users/" + tokenId);
-            if (!response.IsSuccessStatusCode)
+            Token token = Newtonsoft.Json.JsonConvert.DeserializeObject<Token>(cachingDB.StringGet(userID.ToString()));
+            if (token == null)
                 return false;
-            var token = (Token)JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync(), typeof(Token));
             return token.CreatedTime.AddSeconds(token.TTL).CompareTo(DateTime.Now) > 0;
         }
 
         // POST api/login
         // User logging in and new token is created
         [HttpPost]
+<<<<<<< HEAD
         public async Task<User> POST([FromBody]User user)
+=======
+        public async Task<System.Net.HttpStatusCode> LoginUser([FromBody]User user)
+>>>>>>> 696a3984cb0a4d789f9dbfeeedcbaabb473686b2
         {
             var httpClient = Helpers.CouchDBConnect.GetClient("users");
             User u = await DoesUserExist(user._id);
@@ -37,23 +47,17 @@ namespace LoginService.Controllers
             {
                 if (user.password.Equals(u.password))
                 {
-                    u.token = new Token();
-                    u.token.ID = u._id + ":token:" + Guid.NewGuid();
-                    u.token.TTL = 600;
-                    u.token.CreatedTime = DateTime.Now;
+                    Token token = new Token();
+                    token.ID = u._id + ":token:" + Guid.NewGuid();
+                    token.TTL = 600;
+                    token.CreatedTime = DateTime.Now;
 
-                    HttpContent httpContent = new StringContent(
-                        JsonConvert.SerializeObject(u),
-                        System.Text.Encoding.UTF8,
-                        "application/json"
-                        );
+                    this.cachingDB.StringSet(u._id.ToString(), Newtonsoft.Json.JsonConvert.SerializeObject(token));
 
-                    var response = await httpClient.PutAsync("users/" + u._id, httpContent);
-
-                    return u;
+                    return System.Net.HttpStatusCode.Created;
                 }
             }
-            return null;
+            return System.Net.HttpStatusCode.NotFound;
         }
 
         // POST api/login/createuser
@@ -109,14 +113,9 @@ namespace LoginService.Controllers
             User user = await DoesUserExist(id);
             if (user != null)
             {
-                user.token.CreatedTime = System.DateTime.Now;
-                string jsonifiedUserObject = JsonConvert.SerializeObject(user);
-                HttpContent httpContent = new StringContent(
-                    jsonifiedUserObject,
-                    System.Text.Encoding.UTF8,
-                    "application/json"
-                    );
-                var response = await httpClient.PutAsync("users/" + id, httpContent);
+                Token token = Newtonsoft.Json.JsonConvert.DeserializeObject<Token>(cachingDB.StringGet(user._id.ToString()));
+                token.CreatedTime = System.DateTime.Now;
+                this.cachingDB.StringSet(user._id.ToString(), Newtonsoft.Json.JsonConvert.SerializeObject(token));
             }
         }
 

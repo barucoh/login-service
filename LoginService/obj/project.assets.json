@@ -3072,7 +3072,7 @@
           "lib/netstandard1.1/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
-      "StackExchange.Redis.StrongName/1.2.4": {
+      "StackExchange.Redis.StrongName/1.2.6": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -7959,10 +7959,10 @@
         "sqlitepclraw.provider.e_sqlite3.netstandard11.nuspec"
       ]
     },
-    "StackExchange.Redis.StrongName/1.2.4": {
-      "sha512": "qrfSB1BnmM17V20A4yvvNA0HNiDgnBd/CcjaeMKMA4qtup1uuBUMyhl20oj31fRVo71E/fXTbmQCuM9ytBJs6w==",
+    "StackExchange.Redis.StrongName/1.2.6": {
+      "sha512": "UFmT1/JYu1PLiRwkyvEPVHk/tVTJa8Ka2rb9yzidzDoQARvhBVRpaWUeaP81373v54jupDBvAoGHGl0EY/HphQ==",
       "type": "package",
-      "path": "stackexchange.redis.strongname/1.2.4",
+      "path": "stackexchange.redis.strongname/1.2.6",
       "files": [
         "lib/net45/StackExchange.Redis.StrongName.dll",
         "lib/net45/StackExchange.Redis.StrongName.xml",
@@ -7970,7 +7970,7 @@
         "lib/net46/StackExchange.Redis.StrongName.xml",
         "lib/netstandard1.5/StackExchange.Redis.StrongName.dll",
         "lib/netstandard1.5/StackExchange.Redis.StrongName.xml",
-        "stackexchange.redis.strongname.1.2.4.nupkg.sha512",
+        "stackexchange.redis.strongname.1.2.6.nupkg.sha512",
         "stackexchange.redis.strongname.nuspec"
       ]
     },
@@ -12530,7 +12530,8 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.AspNetCore.All >= 2.0.3",
-      "Microsoft.NETCore.App >= 2.0.0"
+      "Microsoft.NETCore.App >= 2.0.0",
+      "StackExchange.Redis.StrongName >= 1.2.6"
     ]
   },
   "packageFolders": {
@@ -12585,6 +12586,10 @@
           "Microsoft.AspNetCore.All": {
             "target": "Package",
             "version": "2.0.3"
+          },
+          "StackExchange.Redis.StrongName": {
+            "target": "Package",
+            "version": "1.2.6"
           }
         },
         "imports": [
