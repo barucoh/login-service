@@ -20,3 +20,14 @@ C:\Users\Tal\cloudapplicationproject\login-service\LoginService\obj\Debug\netcor
 C:\Users\Tal\cloudapplicationproject\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.AssemblyInfo.cs
 C:\Users\Tal\cloudapplicationproject\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.dll
 C:\Users\Tal\cloudapplicationproject\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.pdb
+C:\Projects\CloudApplications\login-service\LoginService\bin\Debug\netcoreapp2.0\LoginService.deps.json
+C:\Projects\CloudApplications\login-service\LoginService\bin\Debug\netcoreapp2.0\LoginService.runtimeconfig.json
+C:\Projects\CloudApplications\login-service\LoginService\bin\Debug\netcoreapp2.0\LoginService.runtimeconfig.dev.json
+C:\Projects\CloudApplications\login-service\LoginService\bin\Debug\netcoreapp2.0\LoginService.dll
+C:\Projects\CloudApplications\login-service\LoginService\bin\Debug\netcoreapp2.0\LoginService.pdb
+C:\Projects\CloudApplications\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.csprojResolveAssemblyReference.cache
+C:\Projects\CloudApplications\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.csproj.CoreCompileInputs.cache
+C:\Projects\CloudApplications\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.AssemblyInfoInputs.cache
+C:\Projects\CloudApplications\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.AssemblyInfo.cs
+C:\Projects\CloudApplications\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.dll
+C:\Projects\CloudApplications\login-service\LoginService\obj\Debug\netcoreapp2.0\LoginService.pdb
